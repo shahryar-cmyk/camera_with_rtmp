@@ -143,10 +143,29 @@ internal class MethodCallHandlerImpl(
             }
             "isEnableHaiSiCamera" -> {
                 try {
-//                    mHS = HaiSiPrjUtils(activity.applicationContext)
+                    mHS = HaiSiPrjUtils(activity.applicationContext)
+                    mHS!!.enableHaiSiDownload(true)
+                    mHS!!.enableLaser(true)
                     mHS!!.enableHaiSiCamera(true)
+                    mHS!!.enableLaser(true)
+                    mHS!!.enableHaiSiCamera(true)
+                    mHS!!.enableHaiSiCamera(true)
+                    //        mHS.switchSdCardToAndroid(true);
+                    //        mHS.switchSdCardToAndroid(true);
+                    val isEnableHaiSiCamera = mHS!!.isEnableHaiSiCamera
+                    val isLaserOn = mHS!!.isLaserOn
+                    val isSdCardOnAndroid = mHS!!.isSdCardOnAndroid
+                    val isHandLightOn = mHS!!.isHandLightOn
+                    val isHaiSiCameraOK = mHS!!.isHaiSiCameraOK
+                    val getUsbDeviceCount = mHS!!.usbDeviceCount
 
-                    result.success(mHS!!.isEnableHaiSiCamera)
+
+                    result.success("Open the HiSilicon camera $isEnableHaiSiCamera\n" +
+                            " The laser light is on $isLaserOn\n" +
+                            " SdCard is mounted on Android $isSdCardOnAndroid\n" +
+                            " the flashlight is on : $isHandLightOn\n" +
+                            " the HiSilicon camera is ok $isHaiSiCameraOK\n" +
+                            " Get the device number of usb $getUsbDeviceCount")
                 } catch (e: Exception) {
                     handleException(e, result)
                 }

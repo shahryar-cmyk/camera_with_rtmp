@@ -97,8 +97,8 @@ Future<bool> get getExternalOK async {
       await _channel.invokeMethod('checkSpecialCamera');
   return isSpecialCamera;
 }
-Future<bool> get isEnableCamera async {
-  final bool isSpecialCamera =
+Future<String> get isEnableCamera async {
+  final String isSpecialCamera =
       await _channel.invokeMethod('isEnableHaiSiCamera');
   return isSpecialCamera;
 }
