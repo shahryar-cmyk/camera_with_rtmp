@@ -29,6 +29,7 @@ import java.io.IOException
 import java.nio.ByteBuffer
 import java.util.*
 
+
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class Camera(
         val activity: Activity?,

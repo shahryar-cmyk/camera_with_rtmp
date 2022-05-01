@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/rtmppublisher.iml" filepath="$PROJECT_DIR$/.idea/rtmppublisher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/rtmppublisher_android.iml" filepath="$PROJECT_DIR$/android/rtmppublisher_android.iml" />
     </modules>
   </component>
 </project>
