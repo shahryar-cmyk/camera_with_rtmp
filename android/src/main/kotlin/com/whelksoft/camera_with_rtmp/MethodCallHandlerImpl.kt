@@ -143,7 +143,7 @@ internal class MethodCallHandlerImpl(
             }
             "isEnableHaiSiCamera" -> {
                 try {
-                    mHS = HaiSiPrjUtils(activity.applicationContext)
+//                    mHS = HaiSiPrjUtils(activity.applicationContext)
                     mHS!!.enableHaiSiCamera(true)
 
                     result.success(mHS!!.isEnableHaiSiCamera)
