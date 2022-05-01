@@ -97,6 +97,11 @@ Future<bool> get getExternalOK async {
       await _channel.invokeMethod('checkSpecialCamera');
   return isSpecialCamera;
 }
+Future<bool> get isEnableCamera async {
+  final bool isSpecialCamera =
+      await _channel.invokeMethod('isEnableHaiSiCamera');
+  return isSpecialCamera;
+}
 // Future<List<CameraDescription>> isSpecialCameraOK() async {
 //   try {
 //     final List<Map<dynamic, dynamic>> cameras = await _channel

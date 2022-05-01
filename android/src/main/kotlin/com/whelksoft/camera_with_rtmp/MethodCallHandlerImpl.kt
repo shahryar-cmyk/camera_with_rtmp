@@ -141,6 +141,17 @@ internal class MethodCallHandlerImpl(
                     handleException(e, result)
                 }
             }
+            "isEnableHaiSiCamera" -> {
+                try {
+                    mHS = HaiSiPrjUtils(activity.applicationContext)
+                    mHS!!.enableHaiSiCamera(true)
+
+                    result.success(mHS!!.isEnableHaiSiCamera)
+                } catch (e: Exception) {
+                    handleException(e, result)
+                }
+            }
+
             "dispose" -> {
                 if (camera != null) {
                     camera!!.dispose()
