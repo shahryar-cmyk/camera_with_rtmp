@@ -92,6 +92,27 @@ Future<List<CameraDescription>> availableCameras() async {
   }
 }
 
+Future<bool> get getExternalOK async {
+  final bool isSpecialCamera =
+      await _channel.invokeMethod('checkSpecialCamera');
+  return isSpecialCamera;
+}
+// Future<List<CameraDescription>> isSpecialCameraOK() async {
+//   try {
+//     final List<Map<dynamic, dynamic>> cameras = await _channel
+//         .invokeListMethod<Map<dynamic, dynamic>>('availableCameras');
+//     return cameras.map((Map<dynamic, dynamic> camera) {
+//       return CameraDescription(
+//         name: camera['name'],
+//         lensDirection: _parseCameraLensDirection(camera['lensFacing']),
+//         sensorOrientation: camera['sensorOrientation'],
+//       );
+//     }).toList();
+//   } on PlatformException catch (e) {
+//     throw CameraException(e.code, e.message);
+//   }
+// }
+
 class CameraDescription {
   CameraDescription({this.name, this.lensDirection, this.sensorOrientation});
 
@@ -176,11 +197,12 @@ class CameraPreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return controller.value.isInitialized
-        ? controller.value.previewSize.width < controller.value.previewSize.height ?
-        RotatedBox(
-        quarterTurns: controller.value.previewQuarterTurns,
-        child:
-        Texture(textureId: controller._textureId)) : Texture(textureId: controller._textureId)
+        ? controller.value.previewSize.width <
+                controller.value.previewSize.height
+            ? RotatedBox(
+                quarterTurns: controller.value.previewQuarterTurns,
+                child: Texture(textureId: controller._textureId))
+            : Texture(textureId: controller._textureId)
         : Container();
   }
 }
@@ -423,7 +445,8 @@ class CameraController extends ValueNotifier<CameraValue> {
         value = value.copyWith(isStreamingVideoRtmp: false);
         break;
       case 'rotation_update':
-        value = value.copyWith(previewQuarterTurns: int.parse(event['errorDescription']));
+        value = value.copyWith(
+            previewQuarterTurns: int.parse(event['errorDescription']));
         break;
     }
   }

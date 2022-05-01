@@ -5,6 +5,7 @@ import android.hardware.camera2.CameraAccessException
 import android.os.Build
 import io.flutter.Log
 import androidx.annotation.RequiresApi
+import com.camera.haisi.HaiSiPrjUtils
 import com.whelksoft.camera_with_rtmp.CameraPermissions.ResultCallback
 import io.flutter.plugin.common.*
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
@@ -20,6 +21,7 @@ internal class MethodCallHandlerImpl(
     private val methodChannel: MethodChannel
     private val imageStreamChannel: EventChannel
     private var camera: Camera? = null
+    var mHS: HaiSiPrjUtils? = null
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
@@ -126,6 +128,15 @@ internal class MethodCallHandlerImpl(
             "getStreamStatistics" -> {
                 try {
                     camera!!.getStreamStatistics(result)
+                } catch (e: Exception) {
+                    handleException(e, result)
+                }
+            }
+            "checkSpecialCamera" -> {
+                try {
+                    mHS = HaiSiPrjUtils(activity.applicationContext)
+                    mHS!!.isHaiSiCameraOK
+                    result.success(mHS!!.isHaiSiCameraOK)
                 } catch (e: Exception) {
                     handleException(e, result)
                 }
