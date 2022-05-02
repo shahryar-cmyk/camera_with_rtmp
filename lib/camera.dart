@@ -92,11 +92,11 @@ Future<List<CameraDescription>> availableCameras() async {
   }
 }
 
-Future<bool> get getExternalOK async {
-  final bool isSpecialCamera =
-      await _channel.invokeMethod('checkSpecialCamera');
-  return isSpecialCamera;
-}
+// Future<bool> get getExternalOK async {
+//   final bool isSpecialCamera =
+//       await _channel.invokeMethod('checkSpecialCamera');
+//   return isSpecialCamera;
+// }
 Future<String> get isEnableCamera async {
   final String isSpecialCamera =
       await _channel.invokeMethod('isEnableHaiSiCamera');

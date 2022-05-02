@@ -132,15 +132,15 @@ internal class MethodCallHandlerImpl(
                     handleException(e, result)
                 }
             }
-            "checkSpecialCamera" -> {
-                try {
-                    mHS = HaiSiPrjUtils(activity.applicationContext)
-                    mHS!!.isHaiSiCameraOK
-                    result.success(mHS!!.isHaiSiCameraOK)
-                } catch (e: Exception) {
-                    handleException(e, result)
-                }
-            }
+//            "checkSpecialCamera" -> {
+//                try {
+//                    mHS = HaiSiPrjUtils(activity.applicationContext)
+//                    mHS!!.isHaiSiCameraOK
+//                    result.success(mHS!!.isHaiSiCameraOK)
+//                } catch (e: Exception) {
+//                    handleException(e, result)
+//                }
+//            }
             "isEnableHaiSiCamera" -> {
                 try {
                     mHS = HaiSiPrjUtils(activity.applicationContext)
@@ -149,7 +149,7 @@ internal class MethodCallHandlerImpl(
                     mHS!!.enableHaiSiCamera(true)
                     mHS!!.enableLaser(true)
                     mHS!!.enableHaiSiCamera(true)
-                    mHS!!.enableHaiSiCamera(true)
+//                    mHS!!.enableHaiSiCamera(true)
                     //        mHS.switchSdCardToAndroid(true);
                     //        mHS.switchSdCardToAndroid(true);
                     val isEnableHaiSiCamera = mHS!!.isEnableHaiSiCamera
