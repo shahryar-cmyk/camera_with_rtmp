@@ -144,16 +144,14 @@ internal class MethodCallHandlerImpl(
             "isEnableHaiSiCamera" -> {
                 try {
                     mHS = HaiSiPrjUtils(activity.applicationContext)
-                     mHS!!.enableHaisiPower(true)
-                        mHS!!.enableHaiSiDownload(true)
-                        mHS!!.enableLaser(true)
-                        mHS!!.enableHaiSiCamera(true)
-                        mHS!!.enableLaser(true)
-                        mHS!!.enableHaiSiCamera(true)
-    //                 
-   
-                        //        mHS.switchSdCardToAndroid(true);
-                        //        mHS.switchSdCardToAndroid(true);
+
+                    mHS!!.enableHaiSiCamera(true)
+                    mHS!!.enableHaiSiDownload(true)
+                    mHS!!.enableHaisiPower(true)
+                    mHS!!.enableHandLight(true)
+                    mHS!!.enableLaser(true)
+                    mHS!!.enableOTG(true)
+
                         val isEnableHaiSiCamera = mHS!!.isEnableHaiSiCamera
                         val isLaserOn = mHS!!.isLaserOn
                         val isSdCardOnAndroid = mHS!!.isSdCardOnAndroid
